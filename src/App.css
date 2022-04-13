@@ -1,0 +1,9 @@
+.contenedorPosts{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.post{
+  box-shadow: 10px 10px 38px 0px rgba(0,0,0,0.75);
+  width: 20vw;
+}
