@@ -1,14 +1,13 @@
 import {useState} from "react";
-const ItemCount = ({stock, initial, onAdd}) =>{
-    const resultado = useState(0)
-    const contador = resultado[0]
-    const setContador = resultado[1]
+const ItemCount = ({stock}) =>{
+    const resultado = useState(1)
+    const [contador, setContador] = resultado
 
     const aumentar = () => {
-        setContador(contador + 1)
+        if(contador < stock) setContador(contador + 1)
     }
     const restar = () => {
-        setContador(contador - 1)
+        if(contador < stock) setContador(contador - 1)
     }
     return (
         <div className='contenedor bg-light'>
@@ -24,7 +23,7 @@ const ItemCount = ({stock, initial, onAdd}) =>{
 }
 
 ItemCount.defaultProps = {
-    initial: "1"
+    stock: "10"
 }
 
 export default ItemCount
