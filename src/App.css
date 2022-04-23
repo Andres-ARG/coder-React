@@ -8,3 +8,30 @@
   width: 20vw;
   overflow: hidden;
 }
+.contenedor{
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 3rem 1rem;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.75);
+}
+.contenedorContador{
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border: 1px gray solid;
+  margin: 20px 0;
+}
+.contenedorContador button{
+  border: none;
+}
+.agregarAlCarrrito:hover{
+  background-color: gray;
+  transition: .4s;
+}
