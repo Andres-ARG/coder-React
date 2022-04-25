@@ -1,5 +1,5 @@
 import {useState} from "react";
-const ItemCount = ({stock}) =>{
+const ItemCount = ({initial, stock, onAdd}) =>{
     const resultado = useState(1)
     const [contador, setContador] = resultado
 
@@ -22,8 +22,5 @@ const ItemCount = ({stock}) =>{
     )
 }
 
-ItemCount.defaultProps = {
-    stock: "10"
-}
 
 export default ItemCount

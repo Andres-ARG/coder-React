@@ -27,7 +27,7 @@ const ItemListContainer = (props) => {
                     <img src='https://picsum.photos/200/200?random=4' className='imgPost'></img>
                 </div>
             </div>
-            <ItemCount />
+            <ItemCount initial= "1" stock="10"/>
         </main>
       )
     }
