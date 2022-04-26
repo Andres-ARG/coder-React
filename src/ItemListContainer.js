@@ -1,5 +1,7 @@
 import ItemCount from "./components/ItemCount"
-
+const onAdd = () => {
+    console.log("Funcion onAdd")
+}
 const ItemListContainer = (props) => {
   return (
         <main>
@@ -27,7 +29,7 @@ const ItemListContainer = (props) => {
                     <img src='https://picsum.photos/200/200?random=4' className='imgPost'></img>
                 </div>
             </div>
-            <ItemCount initial= "1" stock="10"/>
+            <ItemCount initial= "1" stock="10" onAdd={onAdd}/>
         </main>
       )
     }
