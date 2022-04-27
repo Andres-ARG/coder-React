@@ -1,12 +1,25 @@
-.contenedorPosts{
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
+
 .post{
   box-shadow: 10px 10px 38px 0px rgba(0,0,0,0.75);
   width: 20vw;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 2rem;
+  padding: 10px;
+}
+.post:hover{
+  transform: scale(1.05);
+  transition: .4s;
+}
+.btn-Post{
+  border-radius: 5px;
+}
+.btn-Post:hover{
+  background-color: rgb(199, 228, 219);
+  transition: .3s;
 }
 .contenedor{
   width: 200px;
