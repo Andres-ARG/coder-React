@@ -28,7 +28,7 @@ const productosIniciales = [
     }
 ]
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
     const [cargando,setCargando] = useState(true)
     const [productos, setProductos] = useState([])
 
@@ -46,18 +46,16 @@ const ItemListContainer = (props) => {
         })
     })
   
-    if(cargando == true){
+    if(cargando === true){
         return (
             <p>Cargando...</p>
         )
     }else{
         return (
-            <>
-            <main className="main">
+            <main>
                 <ItemList productos= {productos}/>
                 <ItemCount initial={1} stock={10} onAdd={onAdd}/>
             </main>
-            </>
         )
     }
 }
