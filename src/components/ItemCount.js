@@ -11,7 +11,7 @@ const ItemCount = ({initial, stock, onAdd}) =>{
     }
     return (
         <div className='contenedor bg-light'>
-            <span>Alas +13</span>
+            <span>Producto</span>
             <div className='contenedorContador'>
                 <button onClick={restar}>-</button>
                 <span>{contador}</span>

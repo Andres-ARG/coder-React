@@ -1,10 +1,11 @@
 .contenedorPosts{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 .post{
   box-shadow: 10px 10px 38px 0px rgba(0,0,0,0.75);
-  width: 20vw;
+  width: 250px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -50,4 +51,14 @@
 .agregarAlCarrrito:hover{
   background-color: gray;
   transition: .4s;
+}
+.postDetalle{
+  padding: 5px;
+  margin: 15px;
+  text-align: center;
+}
+.contenedorDetalle{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
