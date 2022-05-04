@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import ItemDetail from "./components/ItemDetail"
 import ItemCount from "./components/ItemCount"
+import { useParams } from "react-router-dom" 
 
 const onAdd = () => {
   console.log("Funcion onAdd")
@@ -27,26 +28,31 @@ const productosIniciales = [
   }
 ]
 
-const getItem = (productosIniciales) => {
-  productosIniciales.map(producto => {
-    console.log(producto)
-  })
-}
 
 const ItemDetailContainer = () => {
   const [cargando, setCargando] = useState(true)
   const [producto, setProducto] = useState({})
+  
+  
+  const {id} = useParams()
+
+  // console.log(id)
 
 
   useEffect(() => {
-    const detail = new Promise(res => {
-      setTimeout(() => {
-        res(productosIniciales)
-      }, 2000)
+    const detailProduct = productosIniciales.filter(producto => {
+      // console.log(producto)
+      return producto.id == id
     })
-    detail.then(() => {
+   
+    const pedidoDetail = new Promise(res => {
+      setTimeout(() => {
+        res(detailProduct)
+      }, 1000)
+    })
+    pedidoDetail.then(() => {
       setCargando(false)
-      setProducto(productosIniciales)
+      setProducto(detailProduct)
     })
   })
 
@@ -57,11 +63,10 @@ const ItemDetailContainer = () => {
   }else{
     return(
         <>
-          <hr></hr>
-          <div className="contenedorDetalle">
+          <section className="contenedorDetalle">
             <ItemDetail detalles={producto}/>
             <ItemCount initial={1} stock={10} onAdd={onAdd}/>
-          </div>
+          </section>
         </>
     )
   }

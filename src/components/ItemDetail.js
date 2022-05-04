@@ -1,6 +1,5 @@
 const ItemDetail = ({detalles}) => {
-  
-  return (
+ return (
     <>
     <div className="postDetalle">
       <h3>{detalles[0].title}</h3>
