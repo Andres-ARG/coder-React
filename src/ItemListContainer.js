@@ -2,6 +2,8 @@ import ItemList from "./components/ItemList"
 import { useEffect } from "react"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
+
+
 const productosIniciales = [
     {
         id: 1,
@@ -26,37 +28,38 @@ const productosIniciales = [
     }
 ]
 
+
+
+
 const ItemListContainer = () => {
     const [cargando,setCargando] = useState(true)
     const [productos, setProductos] = useState([])
     const { nombreCategoria } = useParams()
-    // console.log(nombreCategoria)
+    
 
 
+    
     useEffect(()=> {
-        
         if(nombreCategoria === undefined){
-            console.log("pido todos los productos")
             const pedido = new Promise((res) => {
                 setTimeout(()=> {
                     res(productosIniciales)
                 }, 1000)
             })
-            pedido.then(()=> {
+            pedido.then((res)=> {
                 setCargando(false)
-                setProductos(productosIniciales)
+                setProductos(res)
             })
         }else{
-            console.log("pido los productos por categoria")
             const productosFiltrados = productosIniciales.filter(cat => cat.category === nombreCategoria)
             const pedidoPorCategoria = new Promise(res => {
                 setTimeout(()=> {
                     res(productosFiltrados)
                 },1000)
             })
-            pedidoPorCategoria.then(()=>{
+            pedidoPorCategoria.then((res)=>{
                 setCargando(false)
-                setProductos(productosFiltrados)
+                setProductos(res)
             })
         }
     }, [nombreCategoria])
@@ -67,7 +70,9 @@ const ItemListContainer = () => {
         )
     }else{
         return (
-                <ItemList productos= {productos}/>
+                <>
+                    <ItemList productos= {productos}/>
+                </>
         )
     }
 }

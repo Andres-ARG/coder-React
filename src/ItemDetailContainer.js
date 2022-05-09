@@ -7,36 +7,34 @@ const onAdd = () => {
   console.log("Funcion onAdd")
 }
 
-const productosIniciales = [
-  {
-      id: 1,
-      title: "producto1",
-      price: "$2000",
-      pictureUrl: "https://picsum.photos/200/300?random=1"
-  },
-  {
-      id: 2,
-      title: "producto2",
-      price: "$4000",
-      pictureUrl: "https://picsum.photos/200/300?random=2"
-  },
-  {
-      id: 3,
-      title: "producto3",
-      price: "$1000",
-      pictureUrl: "https://picsum.photos/200/300?random=3"
-  }
-]
+ const productosIniciales = [
+   {
+       id: 1,
+       title: "producto1",
+       price: "$2000",
+       pictureUrl: "https://picsum.photos/200/300?random=1"
+   },
+   {
+       id: 2,
+       title: "producto2",
+       price: "$4000",
+       pictureUrl: "https://picsum.photos/200/300?random=2"
+   },
+   {
+       id: 3,
+       title: "producto3",
+       price: "$1000",
+       pictureUrl: "https://picsum.photos/200/300?random=3"
+   }
+ ]
+
 
 
 const ItemDetailContainer = () => {
   const [cargando, setCargando] = useState(true)
   const [producto, setProducto] = useState({})
-  
-  
   const {id} = useParams()
 
-  // console.log(id)
 
 
   useEffect(() => {
@@ -50,9 +48,9 @@ const ItemDetailContainer = () => {
         res(detailProduct)
       }, 1000)
     })
-    pedidoDetail.then(() => {
+    pedidoDetail.then((res) => {
       setCargando(false)
-      setProducto(detailProduct)
+      setProducto(res)
     })
   })
 
