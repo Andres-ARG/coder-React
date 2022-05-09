@@ -1,7 +1,16 @@
 import {useState} from "react";
-const ItemCount = ({initial, stock, onAdd}) =>{
+import {Link, NavLink} from "react-router-dom"
+
+
+const ItemCount = ({stock}) =>{
+
     const resultado = useState(1)
     const [contador, setContador] = resultado
+    const onAdd = () => {
+        console.log(contador)
+    }
+    
+
 
     const aumentar = () => {
         if(contador < stock) setContador(contador + 1)
@@ -17,7 +26,7 @@ const ItemCount = ({initial, stock, onAdd}) =>{
                 <span>{contador}</span>
                 <button onClick={aumentar}>+</button>
             </div>
-            <button className="agregarAlCarrrito" onClick={onAdd}>Agregar al carrito</button>
+            <button className="agregarAlCarrrito" onClick={onAdd}><NavLink to={"/cart"}>Agregar al Carrito</NavLink></button>
         </div>
     )
 }
