@@ -11,6 +11,10 @@ const ItemDetailContainer = () => {
   const [producto, setProducto] = useState({})
   const {id} = useParams()
   
+  const onAdd = () => {
+    console.log("Funcion onAdd")
+}
+
   useEffect(() => {
     const detailProduct = productosIniciales.filter(producto => {
       return producto.id == id
@@ -36,7 +40,7 @@ const ItemDetailContainer = () => {
         <>
           <section className="contenedorDetalle">
             <ItemDetail detalles={producto}/>
-            <ItemCount initial={1} stock={15} />
+            <ItemCount initial={1} stock={15} onAdd={onAdd}/>
           </section>
         </>
     )
