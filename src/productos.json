@@ -1,20 +1,50 @@
 [
     {
         "id": 1,
-        "title": "producto1",
+        "title": "Celular Samsung",
         "price": "$2000",
-        "pictureUrl": "https://picsum.photos/200/300?random=1"
+        "pictureUrl": "https://picsum.photos/200/300?random=1",
+        "category": "CelularesNotebooksTecnologia",
+        "quantity": 0
     },
     {
         "id": 2,
-        "title": "producto2",
+        "title": "Televisor",
         "price": "$4000",
-        "pictureUrl": "https://picsum.photos/200/300?random=2"
+        "pictureUrl": "https://picsum.photos/200/300?random=2",
+        "category": "AudioVideoTv",
+        "quantity": 0
     },
     {
         "id": 3,
-        "title": "producto3",
+        "title": "Lavarropa",
         "price": "$1000",
-        "pictureUrl": "https://picsum.photos/200/300?random=3"
+        "pictureUrl": "https://picsum.photos/200/300?random=3",
+        "category": "Lavarropas",
+        "quantity": 0
+    },
+    {
+        "id": 4,
+        "title": "Cafetera Francesa",
+        "price": "$1000",
+        "pictureUrl": "https://picsum.photos/200/300?random=4",
+        "category": "Cafeteras",
+        "quantity": 0
+    },
+    {
+        "id": 5,
+        "title": "Notebook Lenovo",
+        "price": "$4000",
+        "pictureUrl": "https://picsum.photos/200/300?random=5",
+        "category": "CelularesNotebooksTecnologia",
+        "quantity": 0
+    },
+    {
+        "id": 6,
+        "title": "Aire Acondicionado",
+        "price": "$8000",
+        "pictureUrl": "https://picsum.photos/200/300?random=6",
+        "category": "AiresAcondicionados",
+        "quantity": 0
     }
 ]
