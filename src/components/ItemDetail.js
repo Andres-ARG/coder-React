@@ -20,14 +20,29 @@ const ItemDetail = ({detalles}) => {
   if(!verContador) {
       return (
         <>
-          <div className="postDetalle">
+          <div className="postDetalle post">
           <h3>{detalles[0].title}</h3>
           <img src={detalles[0].pictureUrl}></img>
           <p>Precio: {detalles[0].price}</p>
+          <Link to={"/carrito"}>
+            <button>Confirmar Compra</button>
+          </Link>
           </div>
           <ItemCount stock={15} onAdd={onAdd} onCount={funcionVerContador} />
         </>
     );
+  }else{
+    return(
+      <div className="postDetalle post">
+        <h3>{detalles[0].title}</h3>
+        <img src={detalles[0].pictureUrl}></img>
+        <p>Precio: {detalles[0].price}</p>
+        <Link to={"/carrito"}>
+          <button>Confirmar Compra</button>
+        </Link>
+      </div>
+
+    )
   }
 }
 
