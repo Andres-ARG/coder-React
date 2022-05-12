@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<ItemListContainer />}/>
           <Route path="/productos/:nombreCategoria" element={<ItemListContainer />}/>
           <Route path="/producto/:id" element={<ItemDetailContainer />}/>
-          <Route path="/cart" element={<Cart />}/>
+          <Route path="/Cart" element={<Cart />}/>
         </Routes>
         </main>
       </MiCustomProvider>

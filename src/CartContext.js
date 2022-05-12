@@ -19,7 +19,7 @@ const MiCustomProvider = ({children}) => {
       const newCart = [...cart]
       for (const element of newCart) {
         if(element.item.id == item.id){
-          item.quantity = item.quantity + quantity
+          element.quantity = element.quantity + quantity
         }
       }
       setCart(newCart)
@@ -44,7 +44,7 @@ const MiCustomProvider = ({children}) => {
   }
 
   const isInCart = (id) => {
-    return cart.find(e => e.id === id)
+    return cart.find(e => e.item.id === id)
   }
 
   const valorDelContexto = {

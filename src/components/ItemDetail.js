@@ -24,9 +24,6 @@ const ItemDetail = ({detalles}) => {
           <h3>{detalles[0].title}</h3>
           <img src={detalles[0].pictureUrl}></img>
           <p>Precio: {detalles[0].price}</p>
-          <Link to={"/carrito"}>
-            <button>Confirmar Compra</button>
-          </Link>
           </div>
           <ItemCount stock={15} onAdd={onAdd} onCount={funcionVerContador} />
         </>
@@ -37,7 +34,7 @@ const ItemDetail = ({detalles}) => {
         <h3>{detalles[0].title}</h3>
         <img src={detalles[0].pictureUrl}></img>
         <p>Precio: {detalles[0].price}</p>
-        <Link to={"/carrito"}>
+        <Link to={"/Cart"}>
           <button>Confirmar Compra</button>
         </Link>
       </div>
