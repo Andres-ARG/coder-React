@@ -14,7 +14,6 @@ const ItemCount = ({stock, initial, onAdd, onCount}) =>{
     }
     const confirmar = () => {
         onAdd(contador)
-        console.log(contador)
         setConfirmado(true)
     }
     const cerrarConfirmado = () => {
@@ -32,9 +31,6 @@ const ItemCount = ({stock, initial, onAdd, onCount}) =>{
                         <button onClick={aumentar}>+</button>
                     </div>
                     <button type="button" className="agregarAlCarrrito" onClick={confirmar}>Agregar al Carrito</button>
-                    <button>
-                    <NavLink to={"/Cart"}>Terminar Compra</NavLink>
-                    </button>
                 </div>
             )
         }else{
@@ -46,10 +42,6 @@ const ItemCount = ({stock, initial, onAdd, onCount}) =>{
                         <span>{contador}</span>
                         <button onClick={aumentar}>+</button>
                     </div>
-                    <button type="button" className="agregarAlCarrrito" onClick={confirmar}>Agregar al Carrito</button>
-                    <button>
-                    <NavLink to={"/Cart"}>Terminar Compra</NavLink>
-                    </button>
                     <h6>Se confirmaron {contador} unidades</h6>
                     <button onClick={cerrarConfirmado}>Cerrar Confirmación</button>
                 </div>

@@ -1,20 +1,17 @@
 import { createContext, useState } from "react"
 
 export const cartContext = createContext()
-// console.log(contexto)
 const { Provider } = cartContext
 
 
 const MiCustomProvider = ({children}) => {
-  // console.log(children)
   const [cart,setCart] = useState([])
-  const [cantidad_total,setCantidad_total] = useState(0)
-  const [precio_total,setPrecio_total] = useState(0)
+  const [cantidadTotal,setCantidadTotal] = useState(0)
+  const [precioTotal,setPrecioTotal] = useState(0)
   
   
   
   const addItem = (item, quantity) => {
-    console.log(item)
     if(isInCart(item.id)){
       const newCart = [...cart]
       for (const element of newCart) {
@@ -22,7 +19,9 @@ const MiCustomProvider = ({children}) => {
           element.quantity = element.quantity + quantity
         }
       }
-      setCart(newCart)
+      setCart(...newCart, item)
+      setCantidadTotal(cantidadTotal + item.quantity)
+      setPrecioTotal(precioTotal + item.price)
     }else{
       setCart([
         ...cart,
@@ -32,7 +31,8 @@ const MiCustomProvider = ({children}) => {
         }
       ])
     }
-  };
+  }
+  // console.log(cart)
 
   const removeItem = (id) => {
     const newCart = [...cart].map((element) => element.id !== id);
@@ -48,8 +48,8 @@ const MiCustomProvider = ({children}) => {
   }
 
   const valorDelContexto = {
-    cantidad_total ,
-    precio_total,
+    cantidadTotal ,
+    precioTotal,
     cart ,
     addItem ,
     removeItem , 

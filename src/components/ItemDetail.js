@@ -3,27 +3,25 @@ import { cartContext } from "../CartContext"
 import { Link } from "react-router-dom"
 import ItemCount from "./ItemCount" 
 
-const ItemDetail = ({detalles}) => {
+const ItemDetail = ({producto}) => {
   const [cartItems, setCartItems] = useState(0)
-  const {addItem} = useContext(cartContext)
+  const {addItem, cart, precio_total} = useContext(cartContext)
   const [verContador, setVerContador] = useState(false)
-  
   const onAdd = (quantity) => {
     setCartItems(quantity);
-    addItem(detalles, quantity)
+    addItem(producto, quantity)
   }
 
   const funcionVerContador = () => {
     setVerContador(true)
   }
-
   if(!verContador) {
       return (
         <>
           <div className="postDetalle post">
-          <h3>{detalles[0].title}</h3>
-          <img src={detalles[0].pictureUrl}></img>
-          <p>Precio: {detalles[0].price}</p>
+          <h3>{producto[0].title}</h3>
+          <img src={producto[0].pictureUrl}></img>
+          <p>Precio: {producto[0].price}</p>
           </div>
           <ItemCount stock={15} onAdd={onAdd} onCount={funcionVerContador} />
         </>
@@ -31,11 +29,11 @@ const ItemDetail = ({detalles}) => {
   }else{
     return(
       <div className="postDetalle post">
-        <h3>{detalles[0].title}</h3>
-        <img src={detalles[0].pictureUrl}></img>
-        <p>Precio: {detalles[0].price}</p>
+        <h3>{producto[0].title}</h3>
+        <img src={producto[0].pictureUrl}></img>
+        <p>Precio: {producto[0].price}</p>
         <Link to={"/Cart"}>
-          <button>Confirmar Compra</button>
+          <button>Ir al carrito</button>
         </Link>
       </div>
 
