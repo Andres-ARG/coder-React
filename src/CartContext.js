@@ -19,9 +19,7 @@ const MiCustomProvider = ({children}) => {
           element.quantity = element.quantity + quantity
         }
       }
-      setCart(...newCart, item)
-      setCantidadTotal(cantidadTotal + item.quantity)
-      setPrecioTotal(precioTotal + item.price)
+      setCart(...newCart)
     }else{
       setCart([
         ...cart,
@@ -30,8 +28,13 @@ const MiCustomProvider = ({children}) => {
           quantity: quantity
         }
       ])
+      setCantidadTotal(cantidadTotal + quantity)
+      setPrecioTotal(item[0].price * quantity)
     }
   }
+
+
+
   // console.log(cart)
 
   const removeItem = (id) => {

@@ -5,7 +5,7 @@ import ItemCount from "./ItemCount"
 
 const ItemDetail = ({producto}) => {
   const [cartItems, setCartItems] = useState(0)
-  const {addItem, cart, precio_total} = useContext(cartContext)
+  const {addItem} = useContext(cartContext)
   const [verContador, setVerContador] = useState(false)
   const onAdd = (quantity) => {
     setCartItems(quantity);
@@ -15,6 +15,8 @@ const ItemDetail = ({producto}) => {
   const funcionVerContador = () => {
     setVerContador(true)
   }
+
+  
   if(!verContador) {
       return (
         <>
