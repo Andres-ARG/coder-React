@@ -2,6 +2,7 @@ import { useContext } from "react";
 import {cartContext} from "../CartContext"
 import CartItem from "./CartItem";
 import {Link} from "react-router-dom"
+import { db } from "../firebase"
 
 
 const Cart = () => {

@@ -23,7 +23,7 @@ const MiCustomProvider = ({children}) => {
     }else{
       setCart([
         ...cart,
-        {
+        ,{
           item: item,
           quantity: quantity
         }
