@@ -1,59 +1,47 @@
 import { createContext, useState } from "react"
 
 export const cartContext = createContext()
+
 const { Provider } = cartContext
 
 
 const MiCustomProvider = ({children}) => {
-  const [cart,setCart] = useState([])
-  const [cantidadTotal,setCantidadTotal] = useState(0)
-  const [precioTotal,setPrecioTotal] = useState(0)
+
+  const [carrito,setCarrito] = useState([])
+  const [cantidad_total,setCantidad_total] = useState(0)
+  const [precio_total,setPrecio_total] = useState(0)
   
   
   
-  const addItem = (item, quantity) => {
-    if(isInCart(item.id)){
-      const newCart = [...cart]
-      for (const element of newCart) {
-        if(element.item.id == item.id){
-          element.quantity = element.quantity + quantity
-        }
-      }
-      setCart(...newCart)
+  const addItem = (contador, item) => {
+    if(isInCart(item[0].id)){
+      setCantidad_total(contador)
+        console.log("El producto esta en el carrito")
     }else{
-      setCart([
-        ...cart,
-        ,{
-          item: item,
-          quantity: quantity
-        }
-      ])
-      setCantidadTotal(cantidadTotal + quantity)
-      setPrecioTotal(item[0].price * quantity)
+      setCantidad_total(cantidad_total + contador)
+      setPrecio_total()
+      setCarrito([...carrito, item])
+      console.log(item)
     }
-  }
-
-
-
-  // console.log(cart)
+  };
 
   const removeItem = (id) => {
-    const newCart = [...cart].map((element) => element.id !== id);
-    setCart(newCart);
+    const newCart = [...carrito].filter((carri) => carri.id !== id);
+    setCarrito(newCart);
   }
 
   const clear = () => {
-    setCart([])
+    setCarrito([])
   }
 
   const isInCart = (id) => {
-    return cart.find(e => e.item.id === id)
+    return carrito.find(e=>e.id==id)
   }
 
   const valorDelContexto = {
-    cantidadTotal ,
-    precioTotal,
-    cart ,
+    cantidad_total ,
+    precio_total ,
+    carrito ,
     addItem ,
     removeItem , 
     clear ,

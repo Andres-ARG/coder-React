@@ -1,48 +1,35 @@
 import { useEffect, useState } from "react"
 import ItemDetail from "./components/ItemDetail"
-// import productosIniciales from "./productos.json"
+import ItemCount from "./components/ItemCount"
+import productosIniciales from "./productos.json"
 import { useParams } from "react-router-dom" 
-import {db} from "./firebase"
-import { collection, getDoc, doc, getDocs, addDoc, query } from "firebase/firestore"
+
 
 
 const ItemDetailContainer = () => {
   const [cargando, setCargando] = useState(true)
   const [producto, setProducto] = useState({})
   const {id} = useParams()
+  const [cartItems,setCartItems] = useState(0)
+  
+  const onAdd = (quantity) => {
+    setCartItems(quantity);
+  };
 
   useEffect(() => {
-    
-    
-    // const pedidoDetail = new Promise(res => {
-    //   setTimeout(() => {
-    //     res(detailProduct)
-    //   }, 1000)
-    // })
-    // pedidoDetail.then((res) => {
-    //   setCargando(false)
-    //   setProducto(res)
-    // })
-
-
-    const productosCollection = collection(db, "productos")
-    const consulta = getDocs(productosCollection)
-            consulta
-                .then(resultado=>{
-                    const productos = resultado.docs.map(doc=>{
-                        const productosConId = doc.data()
-                        productosConId.id = doc.id
-                        console.log(productosConId)
-                        return 
-                    })
-                    setProducto(productos)
-                    setCargando(false)
-                    
-                })
-                .catch(error=>{
-
-                })
-                .finally()
+    const detailProduct = productosIniciales.filter(producto => {
+      return producto.id == id
+    })
+   
+    const pedidoDetail = new Promise(res => {
+      setTimeout(() => {
+        res(detailProduct)
+      }, 1000)
+    })
+    pedidoDetail.then((res) => {
+      setCargando(false)
+      setProducto(res)
+    })
   })
 
   if(cargando === true ) {
@@ -51,11 +38,7 @@ const ItemDetailContainer = () => {
     )
   }else{
     return(
-        <>
-          <section className="contenedorDetalle">
-            <ItemDetail producto={producto} />
-          </section>
-        </>
+      <ItemDetail producto={producto}/>
     )
   }
 }

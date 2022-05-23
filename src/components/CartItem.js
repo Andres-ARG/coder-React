@@ -1,20 +1,20 @@
-import { useContext } from "react"
-import { cartContext } from "../CartContext"
-
-const CartItem = ({productoCart}) => {
-    const {cantidadTotal, precioTotal} = useContext(cartContext)
-
-        return (
-            <>
-            <div className="post">
-                <p>Producto: {productoCart.item[0].title}</p>
-                <p>Precio unitario: {productoCart.item[0].price}</p>
-                <p><img src="https://picsum.photos/200/300?random=2"></img></p>
-                <p>Cantidad a comprar: {cantidadTotal}</p>
-                <p>Precio Total: ${precioTotal}</p>
-            </div>
-            </>
-        )
+import React, { useContext } from 'react'
+import {cartContext} from '../CartContext'
+import {memo} from 'react'
+const CartItem = ({productos}) => {
+    const {removeItem, carrito} = useContext(cartContext)
+    console.log(carrito)
+    const handleClick=()=>{
+        removeItem(productos.id)
+    }
+    return (
+    <div>
+        <li>
+            <h4>{productos[0].title}</h4> <h5> {productos[0].price}</h5> <h6>Cat: {productos[0].category}</h6> 
+            <button onClick={handleClick}>Eliminar Producto</button>
+        </li>
+    </div>
+  )
 }
 
-export default CartItem
+export default memo(CartItem)

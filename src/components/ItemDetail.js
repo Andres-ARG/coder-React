@@ -1,44 +1,64 @@
+import React from 'react';
 import { useState, useContext } from "react"
-import { cartContext } from "../CartContext"
-import { Link } from "react-router-dom"
-import ItemCount from "./ItemCount" 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {Link, NavLink} from 'react-router-dom'
+import ItemCount from './ItemCount'
+import {cartContext} from '../CartContext'
+
 
 const ItemDetail = ({producto}) => {
-  const [cartItems, setCartItems] = useState(0)
   const {addItem} = useContext(cartContext)
   const [verContador, setVerContador] = useState(false)
-  const onAdd = (quantity) => {
-    setCartItems(quantity);
-    addItem(producto, quantity)
+  const onClick=(contador,item)=>{
+    toast(` Se han cargado ${contador} productos` , {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      },
+      
+      addItem(contador,producto)
+      
+      );
   }
 
   const funcionVerContador = () => {
     setVerContador(true)
   }
 
-  
-  if(!verContador) {
-      return (
-        <>
-          <div className="postDetalle post">
-          <h3>{producto[0].title}</h3>
+  if(!verContador){
+    return (
+      <div className='contenedorDetalle'>
+        <article className='postDetalle'>
+          <h4>Titulo: {producto[0].title}</h4>
+          <h5>Precio: {producto[0].price}</h5>
           <img src={producto[0].pictureUrl}></img>
-          <p>Precio: {producto[0].price}</p>
-          </div>
-          <ItemCount stock={15} onAdd={onAdd} onCount={funcionVerContador} />
-        </>
-    );
-  }else{
-    return(
-      <div className="postDetalle post">
-        <h3>{producto[0].title}</h3>
-        <img src={producto[0].pictureUrl}></img>
-        <p>Precio: {producto[0].price}</p>
-        <Link to={"/Cart"}>
-          <button>Ir al carrito</button>
-        </Link>
+          <p>Categoria: {producto[0].category}</p>
+            <Link to={"/cart"}>
+              <button onClick={onClick}>Terminar Compra</button>
+            </Link>
+        </article>
+        <ItemCount stock={10} init={1} onAdd={onClick} onCount={funcionVerContador} producto={producto}/>  
       </div>
-
+    )
+  }else {
+    return(
+      <div className='contenedorDetalle'>
+        <article className='postDetalle'>
+          <h3>Detalle del producto</h3>
+          <h4>Titulo: {producto[0].title}</h4>
+          <h5>Precio: {producto[0].price}</h5>
+          <img src={producto[0].pictureUrl}></img>
+          <p>Categoria: {producto[0].category}</p>
+          <Link to={"/cart"}>
+            <button onClick={onClick}>Terminar Compra</button>
+          </Link>
+        </article>
+      </div>
     )
   }
 }
