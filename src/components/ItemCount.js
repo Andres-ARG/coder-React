@@ -1,11 +1,16 @@
-import {useContext, useState} from "react";
+import {useState,useContext} from "react";
 import {NavLink} from "react-router-dom"
-import { cartContext } from '../CartContext'
+
+import {contexto} from '../context/cartContext' 
+
+
+
 
 const ItemCount = ({stock, init, onAdd, onCount, producto}) =>{
     const [contador, setContador] = useState(init)
     const [confirmado, setConfirmado] = useState(false)
-
+    const {addItemToCart, cartItems} = useContext(contexto)
+    
     const aumentar = () => {
         if(contador < stock) setContador(contador + 1)
     }
@@ -13,8 +18,9 @@ const ItemCount = ({stock, init, onAdd, onCount, producto}) =>{
         if(contador < stock) setContador(contador - 1)
     }
     const confirmar = () => {
-        onAdd(contador,producto)
         setConfirmado(true)
+        onAdd(contador)
+        addItemToCart(producto, contador)
     }
     const cerrarConfirmado = () => {
         onCount()
@@ -22,36 +28,34 @@ const ItemCount = ({stock, init, onAdd, onCount, producto}) =>{
     }
     if(!confirmado) {
         return (
-        <div className='contenedor bg-light'>
-            <span>Producto</span>
-            <div className='contenedorContador'>
+        <div className="contenedorContador">
+            <span>{producto.title}</span>
+            <div className="contenedorBotonesContador">
                 <button onClick={restar}>-</button>
                 <span>{contador}</span>
                 <button onClick={aumentar}>+</button>
             </div>
-            <button className="agregarAlCarrrito" onClick={confirmar}>Confirmar</button>
-            <button>
-            <NavLink to={"/cart"}>Terminar Compra</NavLink>
-            </button>
+            <button onClick={confirmar}>Añadir al Carrito</button>
+            
         </div>
     )
     }else{
         return (
-        <div className='contenedor bg-light'>
-            <span>Producto</span>
-            <div className='contenedorContador'>
+        <div className="contenedorContador">
+            <span>{producto.title}</span>
+            <div className="contenedorBotonesContador">
                 <button onClick={restar}>-</button>
                 <span>{contador}</span>
                 <button onClick={aumentar}>+</button>
             </div>
-            <button className="agregarAlCarrrito" onClick={confirmar}>Confirmar</button>
-            <button>
-            <NavLink to={"/cart"}>Terminar Compra</NavLink>
-            </button>
-            <h6>
-            Se confirmaron {contador} unidades!
-            </h6>
-            <button onClick={cerrarConfirmado}>Cerrar</button>
+            
+            
+            <div className="textConfirmacion">
+              <h6>
+              Se confirmaron {contador} unidades!
+              </h6>
+              <button onClick={cerrarConfirmado}>Cerrar</button>
+            </div>
         </div>
         )
     }

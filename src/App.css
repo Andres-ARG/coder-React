@@ -1,75 +1,80 @@
-.contenedorPosts{
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+.articuloProducto{
+    padding: 10px;
+    border: 1px solid black;
+    margin: 15px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 7px 7px 25px -13px rgba(0,0,0,0.75);
 }
-.post{
-  box-shadow: 10px 10px 38px 0px rgba(0,0,0,0.75);
-  width: 250px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 4rem 2rem;
-  padding: 10px;
+.articuloProducto:hover{
+    transform: scale(1.03);
+    transition: .3s;
 }
-.post:hover{
-  transform: scale(1.05);
-  transition: .4s;
+.contenedorProductos{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
-.btn-Post{
-  border-radius: 5px;
+.btnArticle:hover{
+    background-color: cadetblue;
+    transition: .2s;
 }
-.btn-Post:hover{
-  background-color: rgb(199, 228, 219);
-  transition: .3s;
+.articleDetail{
+    border: 1px solid black;
+    width: 240px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 15px;
 }
-.contenedor{
-  width: 200px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 3rem 1rem;
-  border: 1px solid gray;
-  border-radius: 5px;
-  padding: 5px;
-  text-align: center;
-  box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.75);
+.contenedorDetail{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .contenedorContador{
-  background-color: white;
-  display: flex;
-  justify-content: space-between;
-  border: 1px gray solid;
-  margin: 20px 0;
+    border: 1px solid black;
+    width: 170px;
+    height: 15vh;
+    text-align: center;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
 }
-.contenedorContador button{
-  border: none;
+.contenedorBotonesContador{
+    display: flex;
+    justify-content: space-between;
+    margin: 4px;
 }
-.agregarAlCarrrito:hover{
-  background-color: gray;
-  transition: .4s;
-}
-.postDetalle{
-  box-shadow: 10px 10px 38px 0px rgba(0,0,0,0.75);
-  width: 250px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 4rem 2rem;
-  padding: 10px;
-  text-align: center;
-}
-.contenedorDetalle{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+.textConfirmacion{
+    border: 1px solid black;
+    width: 20vw;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: 60%;
 }
 
-.btnCarrito{
-  color: #0F2027;
+.footer{
+    background-color: rgba(53, 85, 146, 0.715);
+}
+
+.contenedorBtnCarrito{
+    display: flex;
+    margin: 0 15px;
+}
+.contenedorBtnCarrito:hover{
+    transform: scale(1.1);
+    transition: .3s;
+}
+.terminarCompraCart{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.terminarCompraCart button:hover{
+    background-color: aquamarine;
+    transition: .3s;
+    color: white;
 }
